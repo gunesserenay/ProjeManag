@@ -1,21 +1,18 @@
 package com.example.projemanag
 
-import android.content.Intent
-import android.graphics.Typeface
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.os.Looper
 import android.view.WindowInsets
 import android.view.WindowManager
-import com.example.projemanag.databinding.ActivitySplashBinding
+import com.example.projemanag.databinding.ActivityIntroBinding
 
-class SplashActivity : AppCompatActivity() {
-    private var binding:ActivitySplashBinding?=null
+class IntroActivity : AppCompatActivity() {
+    private var binding:ActivityIntroBinding?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding= ActivitySplashBinding.inflate(layoutInflater)
+        binding= ActivityIntroBinding.inflate(layoutInflater)
         setContentView(binding?.root)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
@@ -28,14 +25,6 @@ class SplashActivity : AppCompatActivity() {
             )
         }
 
-        val typeface= Typeface.createFromAsset(assets,"Monoton-Regular.ttf")
-        binding?.tvAppName?.typeface=typeface
-
-
-        Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this,IntroActivity::class.java))
-            finish()
-        },2500)
     }
 
     override fun onDestroy() {
