@@ -2,13 +2,13 @@ package com.example.projemanag
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.projemanag.databinding.ActivityMainBinding
+import com.example.projemanag.databinding.ActivitySignInBinding
 
-class MainActivity : AppCompatActivity() {
-    private var binding:ActivityMainBinding?=null
+class SignInActivity : AppCompatActivity() {
+    private var binding:ActivitySignInBinding?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding= ActivityMainBinding.inflate(layoutInflater)
+        binding= ActivitySignInBinding.inflate(layoutInflater)
         setContentView(binding?.root)
     }
 

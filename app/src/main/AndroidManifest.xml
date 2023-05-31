@@ -12,10 +12,17 @@
         android:theme="@style/Theme.ProjeManag"
         tools:targetApi="31">
         <activity
+            android:name=".SignInActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SignUpActivity"
+            android:exported="false"
+            android:theme="@style/Theme.ProjeManag.NoActionBar" />
+        <activity
             android:name=".IntroActivity"
             android:exported="false"
-            android:theme="@style/Theme.ProjeManag.NoActionBar"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.ProjeManag.NoActionBar" />
         <activity
             android:name=".SplashActivity"
             android:exported="true"
