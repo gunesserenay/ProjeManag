@@ -1,18 +1,20 @@
-package com.example.projemanag
+package com.example.projemanag.activities
 
+import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowInsets
 import android.view.WindowManager
-import com.example.projemanag.databinding.ActivitySignInBinding
+import com.example.projemanag.databinding.ActivityIntroBinding
 
-class SignInActivity : AppCompatActivity() {
-    private var binding:ActivitySignInBinding?=null
+class IntroActivity : BaseActivity() {
+    private var binding:ActivityIntroBinding?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding= ActivitySignInBinding.inflate(layoutInflater)
+        binding= ActivityIntroBinding.inflate(layoutInflater)
         setContentView(binding?.root)
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             window.insetsController?.hide(WindowInsets.Type.statusBars())
         } else {
@@ -23,21 +25,14 @@ class SignInActivity : AppCompatActivity() {
             )
         }
 
-        setupActionbar()
-    }
-    private fun setupActionbar(){
-        setSupportActionBar(binding?.toolbarSignInActivity)
-
-        val actionBar=supportActionBar
-        if(actionBar!=null){
-            actionBar.setDisplayHomeAsUpEnabled(true)
-            actionBar.setHomeAsUpIndicator(R.drawable.ic_black_color_back_24dp)
+        binding?.btnSignInIntro?.setOnClickListener {
+            startActivity(Intent(this, SignInActivity::class.java))
         }
-
-        binding?.toolbarSignInActivity?.setNavigationOnClickListener {
-            onBackPressed()
+        binding?.btnSignUpIntro?.setOnClickListener {
+            startActivity(Intent(this, SignUpActivity::class.java))
         }
     }
+
     override fun onDestroy() {
         super.onDestroy()
         binding=null
