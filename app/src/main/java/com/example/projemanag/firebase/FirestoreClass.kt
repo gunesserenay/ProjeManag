@@ -1,5 +1,7 @@
 package com.example.projemanag.firebase
 
+import android.util.Log
+import com.example.projemanag.activities.SignInActivity
 import com.example.projemanag.activities.SignUpActivity
 import com.example.projemanag.models.User
 import com.example.projemanag.utils.Constants
@@ -17,8 +19,28 @@ class FirestoreClass {
             .addOnSuccessListener {
                 activity.userRegisteredSuccess()
             }
+            .addOnFailureListener {
+                e->
+                Log.e(activity.javaClass.simpleName, "Error writing documentation ",e)
+            }
     }
 
+    fun signInUser(activity: SignInActivity){
+        mFirestore.collection(Constants.USERS).document(getCurrentUserId())
+            .get()
+            .addOnSuccessListener {
+                document->
+                val loggedInUSer=document.toObject(User::class.java)
+                if (loggedInUSer!=null){
+                    activity.signInSuccess(loggedInUSer)
+                }
+
+            }
+            .addOnFailureListener {
+                    e->
+                Log.e(activity.javaClass.simpleName, "Error with ", e)
+            }
+    }
     fun getCurrentUserId():String{
         return FirebaseAuth.getInstance().currentUser!!.uid
     }
